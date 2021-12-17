@@ -12,5 +12,13 @@
         <input type="text" name="cor">
         <input type="submit" value="Enviar">
     </form>
+    <div>
+        {% for i in carros %}
+            <div style="background-color: rgba(89, 102, 126, 0.308); margin-bottom: 10px;">
+                Nome: <p>{{ i.nome }}</p>
+                Cor: <p>{{ i.cor }}</p>
+            </div>
+        {% endfor %}
+    </div>
 </body>
 </html>

@@ -9,4 +9,8 @@ def index(request):
         carro = Carro.objects.create(nome=nome, cor=cor)
         carro.save()
 
-    return render(request, 'index.html')
+    context = {
+        'carros' : Carro.objects.all()
+    }
+
+    return render(request, 'index.html', context)
