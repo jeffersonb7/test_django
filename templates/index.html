@@ -10,6 +10,7 @@
     <form action="{% url 'carros' %}" method="POST">{% csrf_token %}
         <input type="text" name="nome">
         <input type="text" name="cor">
+        <input type="text" name="musica" id="">
         <input type="submit" value="Enviar">
     </form>
     <div>
