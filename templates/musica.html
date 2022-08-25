@@ -7,8 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="{% url 'index_musica' %}" method="post">{% csrf_token %}
-        <input type="text" name="mus" id="">
+    <form action="{% url 'index_musica' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <label for="mus">Nome da Música</label>
+        <input type="text" name="nome" id="">
+        <label for="dur">Duração</label>
+        <input type="text" name="duracao" id="">
+        <input type="file" name="file_arquivo" id="">
         <input type="submit" value="Enviar">
     </form>
     

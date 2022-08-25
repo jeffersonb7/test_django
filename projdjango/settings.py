@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-#$u1^&)y6&8u49f0jb%nx!i@i*4-bh_4h5075)9iesk^q#o2#6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','159.203.183.111', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -76,20 +76,19 @@ WSGI_APPLICATION = 'projdjango.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 # DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'my',
-        'USER': 'my',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
+        'NAME': os.getenv("BANCO_NOME_DEV"),
+        'USER': os.getenv("BANCO_USER_DEV"),
+        'PASSWORD': os.getenv("BANCO_SENHA_DEV"),
+        'HOST': os.getenv("BANCO_HOST_DEV"),
+        'PORT': os.getenv("BANCO_PORTA_DEV")
+    },
 }
 
 # Password validation
@@ -128,6 +127,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
