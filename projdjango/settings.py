@@ -14,7 +14,7 @@ from pathlib import Path
 import os 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+    
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -80,14 +80,18 @@ WSGI_APPLICATION = 'projdjango.wsgi.application'
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
+from dotenv import load_dotenv, dotenv_values
+
+load_dotenv()
+config = dotenv_values('.env')
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv("BANCO_NOME_DEV"),
-        'USER': os.getenv("BANCO_USER_DEV"),
-        'PASSWORD': os.getenv("BANCO_SENHA_DEV"),
-        'HOST': os.getenv("BANCO_HOST_DEV"),
-        'PORT': os.getenv("BANCO_PORTA_DEV")
+        'NAME': config["BANCO_NOME_DEV"],
+        'USER': config["BANCO_USER_DEV"],
+        'PASSWORD': config["BANCO_SENHA_DEV"],
+        'HOST': config["BANCO_HOST_DEV"],
+        'PORT': config["BANCO_PORTA_DEV"]
     },
 }
 
